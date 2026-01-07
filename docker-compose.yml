@@ -1,0 +1,15 @@
+services:
+  retroarch:
+    image: nginx:alpine
+    ports:
+      - "8085:80"
+    volumes:
+      - ./retroarch:/usr/share/nginx/html:ro
+
+  files:
+    image: filebrowser/filebrowser
+    ports:
+      - "8086:80"
+    volumes:
+      - ./roms:/srv
+    command: --noauth
